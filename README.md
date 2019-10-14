@@ -1,5 +1,4 @@
 # websocketRedisPub
-分布式环境使用websocket，利用redis
 集群环境中使用websocket时session分布在不同的server，在某个server中进行的操作如何调用到另外一个server中的session进行sendMessage，利用redis的发布/订阅实现。
 
 1. InterviewQueueWebsocket
