@@ -129,31 +129,10 @@ public class PublishService {
 }
 
 4.配置文件
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:redis="http://www.springframework.org/schema/redis"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-                        http://www.springframework.org/schema/beans/spring-beans.xsd
-                        http://www.springframework.org/schema/context
-                        http://www.springframework.org/schema/context/spring-context.xsd
-http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis.xsd">
-	<!-- 
-	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <property name="testOnBorrow" value="true" />
-    </bean>
-    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-          p:host-name="127.0.0.1" p:port="6379" p:password="password"
-          p:pool-config-ref="jedisPoolConfig" p:usePool="true"/>
-    -->
-    <!-- Redis连接-->
-    <!--<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-          p:host-name="192.168.19.129" p:port="6379" p:password="123456">
-        <constructor-arg ref="jedisPoolConfig" />
-    </bean>-->
+
+	
     <bean id="stringRedisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate" p:connection-factory-ref="myRedisConnectionFactory"/>
-    <!-- 缓存序列化方式 -->
+    
     <bean id="keySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
     <bean id="valueSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
@@ -166,7 +145,7 @@ http://www.springframework.org/schema/redis http://www.springframework.org/schem
     <bean id="redisListenerContainer" class="org.springframework.data.redis.listener.RedisMessageListenerContainer">
         <property name="connectionFactory" ref="myRedisConnectionFactory"/>
     </bean>
-   <!-- <bean id="serverEndpointExporter" class="org.springframework.web.socket.server.standard.ServerEndpointExporter"/>-->
-    <!--序列化-->
+ 
+   
     <bean id="jdkSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
  </beans>   
